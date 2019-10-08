@@ -4,6 +4,7 @@ import org.joda.time.DateTime;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Ota {
@@ -15,16 +16,15 @@ public class Ota {
     }
 
     public List<Vuelo> buscarVuelos(DateTime fecha, String origen, String destino) {
-        String codigoProveedor = distribuidorDeTrafico.proveedor();
-        // TODO Implementar
-        return Collections.emptyList();
+        Proveedor proveedor = distribuidorDeTrafico.proveedor();
+
+        return proveedor.buscarVuelo(fecha,origen,destino);
     }
 
     public Boleto reservar(Vuelo vuelo, Set<Pasajero> pasajeros) {
-        String codigoProveedor = distribuidorDeTrafico.proveedor();
-        // TODO Implementar
-        return null;
-    }
+        Proveedor proveedor = distribuidorDeTrafico.proveedor();
 
+        return proveedor.reservar(vuelo, pasajeros);
+    }
 
 }
